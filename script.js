@@ -12,6 +12,7 @@ function displayGame() {
     startGame();
 }
 document.getElementById('play').addEventListener('click',displayGame);
+
 for (let i = 0; i < 27; i++) {
     let x = Math.random() * (HomeCanvas.width - 2 * fixedRadius) + fixedRadius; 
     let y = Math.random() * (HomeCanvas.height - 2 * fixedRadius) + fixedRadius; 
@@ -192,6 +193,7 @@ function restartGame() {
     hideGameOver();
     gameLoop();
     startGame();
+
 }
 
 
