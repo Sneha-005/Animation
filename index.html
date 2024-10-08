@@ -3,15 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="sample.css">
     <title>Save the ball</title>
 </head>
 <body>
-
-    <canvas id="myCanvas" > </canvas>
-    <button id="play">LET'S PLAY</button>
-    
-
-    <script src="script.js"></script>
+    <section id="homePage">
+        <canvas id="HomeCanvas" > </canvas>
+        <h1 id="text">SAVE THE BALL</h1>
+        <button id="play">LET'S PLAY</button>
+    </section>
+    <section id="gamePage" style="display: none;">
+        <canvas id="myCanvas" ></canvas>
+        <div id="gameOver" style="display: none;">
+            <button id="home">Home</button>
+            <button id="restart">Restart</button>
+        </div>
+    </section>   
+    <script src="sample.js"></script>
 </body>
 </html>
