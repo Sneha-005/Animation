@@ -2,7 +2,7 @@ var canvas=document.getElementById("myCanvas");
 var ctx=canvas.getContext("2d");
 var circles=[];
 var fixedRadius=20;
-var fixedColor="grey";
+var fixedColor="orange";
 myCanvas.width=window.innerWidth;
 myCanvas.height=window.innerHeight;
 ctx.fillText("SAVE THE BALL",15,15);
@@ -10,8 +10,8 @@ ctx.fillText("SAVE THE BALL",15,15);
 // Function to write text;
 
 function drawText(text) {
-    ctx.font = "60px bold Vardana"; // Set the font size and style
-    ctx.fillStyle = "red"; // Set the text color
+    ctx.font = "80px bolder Vardana"; // Set the font size and style
+    ctx.fillStyle = "white"; // Set the text color
     ctx.textAlign = "center"; // Center the text horizontally
     ctx.fillText(text, canvas.width / 2, canvas.height / 2); // Draw text at the center of the canvas
 }
