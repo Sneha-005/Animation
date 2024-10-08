@@ -107,7 +107,7 @@ let slider = {
 let gameOver = false;
 let score = 0;
 let gameStarted = false; // For delaying ball movement
-let startDelay = 3000;
+let startDelay = 2000;
 
 function shadow(){
     ctx.shadowBlur = 20;  // Amount of blur for the glow
@@ -157,6 +157,7 @@ function moveBall(){
     if (ball.y + ball.radius > slider.y &&
         ball.x > slider.x && ball.x < slider.x + slider.width) {
         ball.dy = -ball.dy;
+        ball.dy *= 1.1; 
         score++;
 
     }
