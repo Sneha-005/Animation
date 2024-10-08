@@ -185,6 +185,7 @@ function hideGameOver() {
 }
 
 function restartGame() {
+    score=0;
     gameOver=false;
     ball.x = canvas.width / 2,
     ball.y = canvas.height / 2,
