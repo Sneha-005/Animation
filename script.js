@@ -30,7 +30,7 @@ for (let i = 0; i < 27; i++) {
 
     });
 }
-//Function to draw all circles
+
 function drawCircles(){
     clearCanvas();
     circles.forEach(function(circle){
@@ -38,7 +38,7 @@ function drawCircles(){
     });
 }
 
-//Function to draw a single circle
+
 function drawCircle(circle) {
     Homectx.beginPath();
     Homectx.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI, false);
@@ -47,36 +47,36 @@ function drawCircle(circle) {
     Homectx.closePath();
 }
 
-// Function to clear the canvas
+
 function clearCanvas() {
     Homectx.clearRect(0, 0, Homecanvas.width, Homecanvas.height);
 }
 
-// Function to update the position of the circles
+
 function updateCircles() {
     circles.forEach(function(circle) {
-        // Move the circle by updating its position
+        
         circle.x += circle.speedX;
         circle.y += circle.speedY;
 
-        // Check for collision with the canvas edges and reverse direction if needed
+        
         if (circle.x + circle.radius > Homecanvas.width || circle.x - circle.radius < 0) {
-            circle.speedX = -circle.speedX;  // Reverse x direction
+            circle.speedX = -circle.speedX;  
         }
         if (circle.y + circle.radius > Homecanvas.height || circle.y - circle.radius < 0) {
-            circle.speedY = -circle.speedY;  // Reverse y direction
+            circle.speedY = -circle.speedY; 
         }
     });
 }
 
-// Function to animate the circles
+
 function animate() {
-    updateCircles();  // Update the position of circles
-    drawCircles();    // Redraw the circles
-    requestAnimationFrame(animate);  // Continue animation
+    updateCircles();  
+    drawCircles();   
+    requestAnimationFrame(animate);  
 }
 
-// Start the animation
+
 animate();
 
 const canvas = document.getElementById("myCanvas");
@@ -92,7 +92,7 @@ let ball = {
     dx: 4,
     dy: 4,
     color: "white",
-    borderColor: "black", // Border color
+    borderColor: "black", 
     borderWidth: 3 
 };
 
@@ -106,17 +106,17 @@ let slider = {
 };
 let gameOver = false;
 let score = 0;
-let gameStarted = false; // For delaying ball movement
+let gameStarted = false; 
 let startDelay = 2000;
 
 function shadow(){
-    ctx.shadowBlur = 20;  // Amount of blur for the glow
-    ctx.shadowColor = "yellow";  // Color of the glow
+    ctx.shadowBlur = 20;  
+    ctx.shadowColor = "yellow"; 
     ctx.lineWidth = ball.borderWidth;
     ctx.strokeStyle = ball.borderColor;
     ctx.stroke();
     ctx.closePath();
-    ctx.shadowBlur = 0;  // Turn off the shadow for future drawings
+    ctx.shadowBlur = 0;  
     ctx.shadowColor = "transparent"; 
 }
 
@@ -153,14 +153,22 @@ function moveBall(){
     if (ball.y - ball.radius < 0) {
         ball.dy = -ball.dy;
     }
-
+ 
     if (ball.y + ball.radius > slider.y &&
         ball.x > slider.x && ball.x < slider.x + slider.width) {
+        let hitPosition = (ball.x - slider.x) / slider.width;
+        hitPosition = Math.max(0, Math.min(1, hitPosition));
+        let bounceAngle = (hitPosition - 0.5) * 2;  
+        let minSpeed = 2;
+        ball.dx = bounceAngle * 5; 
+        if (Math.abs(ball.dx) < minSpeed) {
+            ball.dx = ball.dx < 0 ? -minSpeed : minSpeed;
+        }
         ball.dy = -ball.dy;
-        ball.dy *= 1.1; 
+        ball.dy *= 1.1;
         score++;
-
     }
+        
     if (ball.y + ball.radius > canvas.height) {
         gameOver = true;
         displayGameOver();
@@ -187,13 +195,13 @@ function hideGameOver() {
 
 function restartGame() {
     score=0;
+    minSpeed = 2;
     gameOver=false;
     ball.x = canvas.width / 2,
     ball.y = canvas.height / 2,
     ball.dx = 4,
     ball.dy = 4,
     hideGameOver();
-    gameLoop();
     startGame();
 
 }
@@ -224,7 +232,7 @@ function gameLoop() {
 
 function startGame() {
     setTimeout(() => {
-        gameStarted = true;  // Start moving the ball after delay
+        gameStarted = true;  
     }, startDelay); 
 gameLoop();
 }
